@@ -1,20 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Provider } from 'react-redux';
+import styled from 'styled-components/native';
+import { Nested } from '@/Nested';
+import { store } from '@/store/store';
+import ThemeProvider from '@/ThemeProvider';
+import StatusBar from '@/StatusBar';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+	return (
+		<Provider store={store}>
+			<ThemeProvider>
+				<StyledView>
+					<Nested />
+					<StatusBar />
+				</StyledView>
+			</ThemeProvider>
+		</Provider>
+	);
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const StyledView = styled.View`
+	background-color: ${props => props.theme.background};
+	flex: 1;
+	align-items: center;
+	justify-content: center;
+`;
