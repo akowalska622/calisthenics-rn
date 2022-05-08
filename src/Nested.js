@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { Button } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 import styled from 'styled-components/native';
 import { toggleTheme } from '@/store/reducers/theme';
 
@@ -16,11 +17,12 @@ export const Nested = () => {
 
 const StyledView = styled.View`
 	width: 400px;
+	padding: 20px;
 	height: 200px;
-	background-color: ${({ theme }) => theme.primary};
+	background-color: ${({ theme }) => theme.background};
 `;
 
 const StyledText = styled.Text`
-	color: white;
+	color: ${({ theme }) => theme.text};
 	font-size: ${({ theme }) => theme.textSize};
 `;
