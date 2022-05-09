@@ -1,31 +1,54 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useTheme } from 'styled-components';
-import { Nested } from '@/Nested';
+import { Ionicons } from '@expo/vector-icons';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { StackNavigator } from '@/navigation/StackNavigator';
+import { OptionsScreen } from '@/screens/OptionsScreen';
 
 export const AppNavigation = () => {
+	const Tab = createBottomTabNavigator();
 	const theme = useTheme();
-	const Stack = createNativeStackNavigator();
+
 	return (
 		<NavigationContainer>
-			<Stack.Navigator
+			<Tab.Navigator
 				screenOptions={{
 					headerStyle: {
 						backgroundColor: theme.surface,
 					},
 					headerTintColor: theme.text,
-					contentStyle: { backgroundColor: theme.background },
+					tabBarActiveTintColor: theme.primary,
+					tabBarInactiveTintColor: theme.text,
+					tabBarActiveBackgroundColor: theme.surface,
+					tabBarInactiveBackgroundColor: theme.surface,
+					headerShadowVisible: false,
+					tabBarStyle: {
+						borderTopWidth: 0,
+						height: 70,
+					},
+					headerTitleAlign: 'center',
 				}}
 			>
-				<Stack.Screen
-					name='HomeScreen'
-					component={Nested}
+				<Tab.Screen
+					name='Home'
+					component={StackNavigator}
 					options={{
-						title: 'Calisthenics with Paul Wade',
-						headerTitleAlign: 'center',
+						tabBarIcon: ({ color, size }) => (
+							<Ionicons name='home' color={color} size={size} />
+						),
+						headerShown: false,
 					}}
 				/>
-			</Stack.Navigator>
+				<Tab.Screen
+					name='Options'
+					component={OptionsScreen}
+					options={{
+						tabBarIcon: ({ color, size }) => (
+							<Ionicons name='cog-outline' color={color} size={size} />
+						),
+					}}
+				/>
+			</Tab.Navigator>
 		</NavigationContainer>
 	);
 };

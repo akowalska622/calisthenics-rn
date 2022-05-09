@@ -1,13 +1,13 @@
-const global = {
-	h1Size: '30px',
-	h2Size: '22px',
-	h3Size: '18px',
-	textSize: '16px',
-	secondaryTextSize: '14px',
+export const typography = {
+	h1: 30,
+	h2: 22,
+	h3: 18,
+	p: 16,
+	small: 14,
 };
 
 export const darkTheme = {
-	...global,
+	...typography,
 	background: '#32353F',
 	text: '#fff',
 	primary: '#FF891C',
@@ -17,7 +17,7 @@ export const darkTheme = {
 };
 
 export const lightTheme = {
-	...global,
+	...typography,
 	background: '#FDF8F5',
 	text: '#000',
 	primary: '#FF891C',
