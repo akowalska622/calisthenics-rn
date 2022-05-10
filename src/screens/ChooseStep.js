@@ -2,7 +2,6 @@ import { useLayoutEffect } from 'react';
 import styled from 'styled-components';
 
 import { StyledView } from '@/components/atoms/StyledView';
-import { StyledText } from '@/components/atoms/StyledText';
 import { PressableCard } from '@/components/atoms/PressableCard';
 import { Header } from '@/components/atoms/Header';
 import { EXERCISES, STEPS } from '@/utils/ExercisesData';
@@ -23,6 +22,13 @@ export const ChooseStep = ({ navigation, route }) => {
 		});
 	});
 
+	const handleChooseStep = id => {
+		navigation.navigate('Repetitions', {
+			stepId: id,
+			exerciseName,
+		});
+	};
+
 	return (
 		<StyledView>
 			<Header size='h2'>Choose your step</Header>
@@ -37,7 +43,7 @@ export const ChooseStep = ({ navigation, route }) => {
 							color: globalStyles.primary,
 						}}
 						hasProgress
-						onPress={() => navigation.navigate('Repetitions')}
+						onPress={handleChooseStep.bind(null, step.id)}
 					>
 						{idx + 1}. {step.name}
 					</PressableCard>
