@@ -2,12 +2,15 @@ import styled from 'styled-components';
 import { Ionicons } from '@expo/vector-icons';
 
 import { StyledText } from '@/components/atoms/StyledText';
+import { Progress } from '@/components/atoms/Progress';
 
 export const PressableCard = ({
 	children,
 	onPress = () => {},
 	hasIcon = false,
 	iconProps = {},
+	hasProgress = false,
+	progress,
 }) => {
 	return (
 		<Pressable
@@ -25,6 +28,7 @@ export const PressableCard = ({
 				/>
 			)}
 			<StyledText>{children}</StyledText>
+			{hasProgress && <Progress filled={progress} />}
 		</Pressable>
 	);
 };
@@ -36,4 +40,5 @@ const Pressable = styled.Pressable`
 	border-radius: 10px;
 	flex-direction: row;
 	align-items: center;
+	position: relative;
 `;

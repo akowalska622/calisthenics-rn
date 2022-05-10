@@ -845,9 +845,9 @@ const bridge = [
 ];
 
 export const STEPS = {
-	[EXERCISES.pull_up]: pull_ups,
-	[EXERCISES.push_up]: push_ups,
-	[EXERCISES.squats]: squats,
-	[EXERCISES.abs]: abs,
-	[EXERCISES.bridge]: bridge,
+	[EXERCISES_ENUM.pull_up]: pull_ups,
+	[EXERCISES_ENUM.push_up]: push_ups,
+	[EXERCISES_ENUM.squats]: squats,
+	[EXERCISES_ENUM.abs]: abs,
+	[EXERCISES_ENUM.bridge]: bridge,
 };

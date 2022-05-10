@@ -4,7 +4,7 @@ import { StyledView } from '@/components/atoms/StyledView';
 import { PressableCard } from '@/components/atoms/PressableCard';
 import { Header } from '@/components/atoms/Header';
 import { EXERCISES } from '@/utils/ExercisesData';
-import { darkTheme } from '@/Themes';
+import { globalStyles } from '@/Themes';
 
 export const ChooseExercise = ({ navigation }) => {
 	const handleChooseExercise = id => {
@@ -24,7 +24,7 @@ export const ChooseExercise = ({ navigation }) => {
 						iconProps={{
 							name: 'chevron-forward-circle-outline',
 							size: 15,
-							color: darkTheme.primary,
+							color: globalStyles.primary,
 						}}
 						onPress={handleChooseExercise.bind(null, exercise.id)}
 					>

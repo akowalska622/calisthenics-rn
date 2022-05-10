@@ -6,22 +6,28 @@ export const typography = {
 	small: 14,
 };
 
+export const globalStyles = {
+	primary: '#FF891C',
+	accent: '#1BC8F6',
+	alert: '#B94E2C',
+};
+
 export const darkTheme = {
 	...typography,
+	...globalStyles,
 	background: '#32353F',
 	text: '#fff',
 	primary: '#FF891C',
 	accent: '#1BC8F6',
 	surface: '#3C3F49',
-	alert: '#B94E2C',
 };
 
 export const lightTheme = {
 	...typography,
+	...globalStyles,
 	background: '#FDF8F5',
 	text: '#000',
 	primary: '#FF891C',
 	accent: '#1BC8F6',
 	surface: '#FFFFFF',
-	alert: '#B94E2C',
 };
