@@ -1,16 +1,41 @@
-import { Button } from 'react-native';
+import styled from 'styled-components';
 
 import { StyledView } from '@/components/atoms/StyledView';
-import { StyledText } from '@/components/atoms/StyledText';
+import { PressableCard } from '@/components/atoms/PressableCard';
+import { Header } from '@/components/atoms/Header';
+import { EXERCISES } from '@/utils/ExercisesData';
+import { darkTheme } from '@/Themes';
 
 export const ChooseExercise = ({ navigation }) => {
+	const handleChooseExercise = id => {
+		navigation.navigate('ChooseStep', {
+			exerciseId: id,
+		});
+	};
+
 	return (
 		<StyledView>
-			<StyledText>hello from the exercise screen</StyledText>
-			<Button
-				title='Chosen exercise'
-				onPress={() => navigation.navigate('ChooseStep')}
-			/>
+			<Header size='h2'>Choose your exercise</Header>
+			<List>
+				{EXERCISES.map(exercise => (
+					<PressableCard
+						key={exercise.id}
+						hasIcon
+						iconProps={{
+							name: 'chevron-forward-circle-outline',
+							size: 15,
+							color: darkTheme.primary,
+						}}
+						onPress={handleChooseExercise.bind(null, exercise.id)}
+					>
+						{exercise.name}
+					</PressableCard>
+				))}
+			</List>
 		</StyledView>
 	);
 };
+
+const List = styled.ScrollView`
+	flex: 1;
+`;
