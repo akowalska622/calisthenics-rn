@@ -6,4 +6,5 @@ export const StyledText = ({ children, ...restOfProps }) => {
 
 const Text = styled.Text`
 	color: ${({ theme }) => theme.text};
+	font-size: ${({ theme }) => theme.p};
 `;

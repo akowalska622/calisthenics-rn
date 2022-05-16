@@ -1,12 +1,14 @@
+import styled from 'styled-components';
 import { StyledText } from '@/components/atoms/StyledText';
-import { typography } from '@/Themes';
 
-export const Header = ({ children, size, style }) => {
+export const Header = ({ children, size, ...restOfProps }) => {
 	return (
-		<StyledText
-			style={{ fontSize: typography[size], marginVertical: 10, ...style }}
-		>
+		<StyledHeader size={size} {...restOfProps}>
 			{children}
-		</StyledText>
+		</StyledHeader>
 	);
 };
+
+const StyledHeader = styled(StyledText)`
+	font-size: ${({ theme, size }) => theme[size]};
+`;
